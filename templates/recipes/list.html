@@ -1,0 +1,24 @@
+<h1>You are in the recipe part of the blog</h1>
+<!-- will be fairly plain for now -->
+
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1>My Recipes</h1>
+<h3><a href='{% url "recipes:create" %}'>Add Your Recipe</a></h3>
+<hr/>
+<ul>
+    {% for x in object_list %}
+       <li><a href='{{ x.get_absolute_url }}'>{{x.name}}</a></li> 
+    {% empty %}
+       <li>No recipes found.</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
+
+<!-- <div class='mb-3'>
+        <a class='lead' href='{{ x.get_absolute_url }}'>{{ x.name }}</a>
+        <div hx-get='{% url "meal-toggle" recipe_id=x.id %}' hx-trigger='revealed'></div>
+</div> -->
